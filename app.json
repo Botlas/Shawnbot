@@ -1,0 +1,13 @@
+{
+	"name": "Shawnbot",
+	"description": "Read all messages in Slack and respond with quotes. Basically replace shawn.",
+	"repository": "https://github.com/Botlas/Shawnbot",
+	"env": {
+		"BOT_TOKEN": {
+			"description": "Bot token for Slack"
+		},
+		"QUOTE_FILE": {
+			"description": "File containing all quotes."
+		}
+	}
+}
