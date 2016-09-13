@@ -23,7 +23,7 @@ class Config:
                     value = line[idx + 1:].strip()
                     env[key] = value
         else:
-            logger.info('running on heroku, reading config from environment')
+            print 'running on heroku, reading config from environment'
             env = os.environ
         
         try:
