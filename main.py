@@ -86,6 +86,10 @@ if __name__ == '__main__':
     shawn_bot = Shawnbot(_quotes.get().quote_list, bot_token)
     shawn_bot.start()
     
+    # never return
+    resume = threading.Event()
+    resume.wait()
+    
     raw_input("Press Enter to continue...")
     shawn_bot.stop()
     
