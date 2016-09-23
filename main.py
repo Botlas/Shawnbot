@@ -1,4 +1,5 @@
 import threading, time, random
+import safygiphy, json, requests
 
 from config import Config
 from quotes import Quotes
@@ -42,8 +43,11 @@ class Shawnbot:
         
     def _handle_command(self, command, channel):
         try:
+            # check if it is a slash command
+            if command.startswith('/'):
+                _handle_slash(self, command[1:], channel)
             # It's all upper case
-            if command == command.upper():
+            elif command == command.upper():
                 text = "Calm down. Calm down."
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
             # Look for keywords
@@ -67,6 +71,25 @@ class Shawnbot:
                     return output['text'], output['channel']
         return None, None 
 
+    def _handle_slash(self, command, channel):
+        if command == 'eye_roll':
+            g = safygiphy.Giphy()
+            r = g.random(tag="eye-roll")
+            payload = {
+                'text': r['data']['image_url'],
+                'channel': channel
+            }
+
+        # send response
+        s = json.dumps(payload)
+        
+        try: 
+            r = requests.post(self.slack_webhook_url, data=s)
+        except:
+            print 'ERROR: Requests threw!'
+            
+        
+        
 if __name__ == '__main__':
 
     print 'Shawnbot starting...'
