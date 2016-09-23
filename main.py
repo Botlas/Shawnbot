@@ -46,7 +46,7 @@ class Shawnbot:
             # check if it is a slash command
             print command
             if command.startswith(' /'):
-                _handle_slash(self, command[1:], channel)
+                _handle_slash(self, command[2:], channel)
             # It's all upper case
             elif command == command.upper():
                 text = "Calm down. Calm down."
