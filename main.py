@@ -84,7 +84,8 @@ class Shawnbot:
         s = json.dumps(payload)
         
         try: 
-            r = requests.post(self.slack_webhook_url, data=s)
+            print payload
+            # r = requests.post(self.slack_webhook_url, data=s)
         except:
             print 'ERROR: Requests threw!'
             
