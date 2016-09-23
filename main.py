@@ -40,15 +40,12 @@ class Shawnbot:
             time.sleep(1)
         
         print 'Ending Slack Thread.'
-        
+    
     def _handle_command(self, command, channel):
         try:
-            # check if it is a slash command
-            print command
-            if command.startswith('/'):
-                _handle_slash(self, command[1:], channel)
+            # print command
             # It's all upper case
-            elif command == command.upper():
+            if command == command.upper():
                 text = "Calm down. Calm down."
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
             # Look for keywords
@@ -58,7 +55,7 @@ class Shawnbot:
                         text = random.choice(self.quote_list[key])
                         self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
         except:
-            print "Exception in _handle_command:", sys.exc_info()[0]
+            print "Exception in _handle_command:", sys.exc_info()
     
     def _parse_slack_output(self, slack_rtm_output):
         # print slack_rtm_output
@@ -71,27 +68,6 @@ class Shawnbot:
                     # return text after the @ mention, whitespace removed
                     return output['text'], output['channel']
         return None, None 
-
-    def _handle_slash(self, command, channel):
-        payload = None
-        if command == 'eye_roll':
-            g = safygiphy.Giphy()
-            r = g.random(tag="eye-roll")
-            payload = {
-                'text': r['data']['image_url'],
-                'channel': channel
-            }
-
-        # send response
-        s = json.dumps(payload)
-        
-        try: 
-            print payload
-            # r = requests.post(self.slack_webhook_url, data=s)
-        except:
-            print 'ERROR: Requests threw!'
-            
-        
         
 if __name__ == '__main__':
 
