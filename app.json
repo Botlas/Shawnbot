@@ -8,10 +8,6 @@
 		},
 		"QUOTE_FILE": {
 			"description": "File containing all quotes."
-		},
-        "WEB_HOOK": {
-            "description": "Incomgin webhook."
-        }
-        
+		}
 	}
 }
