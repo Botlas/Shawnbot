@@ -1,4 +1,3 @@
 slackclient
-json
 requests
 safygiphy
