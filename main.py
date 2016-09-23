@@ -1,4 +1,4 @@
-import threading, time, random
+import threading, time, random, sys
 import safygiphy, json, requests
 
 from config import Config
@@ -58,7 +58,7 @@ class Shawnbot:
                         text = random.choice(self.quote_list[key])
                         self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
         except:
-            print 'Exception in _handle_command.'
+            print "Exception in _handle_command:", sys.exc_info()[0]
     
     def _parse_slack_output(self, slack_rtm_output):
         # print slack_rtm_output
@@ -73,6 +73,7 @@ class Shawnbot:
         return None, None 
 
     def _handle_slash(self, command, channel):
+        payload = None
         if command == 'eye_roll':
             g = safygiphy.Giphy()
             r = g.random(tag="eye-roll")
