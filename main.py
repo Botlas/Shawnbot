@@ -44,6 +44,7 @@ class Shawnbot:
     def _handle_command(self, command, channel):
         try:
             # check if it is a slash command
+            print command
             if command.startswith(' /'):
                 _handle_slash(self, command[1:], channel)
             # It's all upper case
