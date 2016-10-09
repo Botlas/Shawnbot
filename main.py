@@ -54,6 +54,7 @@ class Shawnbot:
                     if key.lower() in command.lower():
                         text = random.choice(self.quote_list[key])
                         self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
+                        return
         except:
             print "Exception in _handle_command:", sys.exc_info()
     
