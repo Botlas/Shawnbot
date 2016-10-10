@@ -50,11 +50,12 @@ class Shawnbot:
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
             # Look for keywords
             else:
+                poss = []
                 for key in self.quote_list.keys():
                     if key.lower() in command.lower():
-                        text = random.choice(self.quote_list[key])
-                        self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
-                        return
+                        poss = poss + self.quote_list[key]
+                if poss:
+                    self.slack_client.api_call("chat.postMessage", channel=channel, text=random.choice(poss), as_user=True)
         except:
             print "Exception in _handle_command:", sys.exc_info()
     
@@ -89,9 +90,10 @@ if __name__ == '__main__':
     shawn_bot = Shawnbot(_quotes.get().quote_list, bot_token)
     shawn_bot.start()
     
-    # never return
-    resume = threading.Event()
-    resume.wait()
+    # never return if on heroku
+    if config.is_local == False:
+        resume = threading.Event()
+        resume.wait()
     
     raw_input("Press Enter to continue...")
     shawn_bot.stop()

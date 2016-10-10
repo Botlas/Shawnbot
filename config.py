@@ -5,15 +5,15 @@ class Config:
 
     def load_config(self, config_path):
         env = {}
-        is_local = False
+        self.is_local = False
         if not 'DYNO' in os.environ:
-            is_local = True
+            self.is_local = True
             if not os.path.exists(config_path):
                 print 'please create a .env file in this directory in order to run locally!'
                 exit(-1)
 
         # used for local testing without starting up heroku
-        if is_local:
+        if self.is_local:
             env = {}
             print 'running locally, reading config from %s' % config_path
             with open(config_path, 'r') as fp:
