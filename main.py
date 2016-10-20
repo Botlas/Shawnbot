@@ -64,7 +64,8 @@ class Shawnbot:
         output_list = slack_rtm_output
         if output_list and len(output_list) > 0:
             for output in output_list:
-                if output and 'user_profile' in output and output['user_profile']['name'] == 'shawnbot':
+                # if output and 'user_profile' in output and output['user_profile']['name'] == 'shawnbot':
+                if output and 'user_profile' in output and 'bot' in output['user_profile']['name']:
                     continue
                 if output and 'text' in output:
                     # return text after the @ mention, whitespace removed
