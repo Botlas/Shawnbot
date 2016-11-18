@@ -5,6 +5,23 @@ from config import Config
 from quotes import Quotes
 from slackclient import SlackClient
 
+def CreateImageAttachment():
+    max = 12
+    img_url = 'https://github.com/Botlas/Shawnbot/blob/master/images/image%s.png' % random.randint(0,max)
+
+    attachments =
+        {
+            "attachments" : [
+                {
+                    "image_url": image_url,
+                    "text": "Jim's Busy."
+                }
+            ]
+        }
+
+    return attachments
+
+
 class Shawnbot:
     def __init__(self, quote_list, bot_token):
         self.quote_list = quote_list
@@ -48,6 +65,8 @@ class Shawnbot:
             if command == command.upper():
                 text = "Calm down. Calm down."
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
+            elif command.lower() == "jimmy":
+                self.slack_client.api_call("chat.postMessage", channel=channel, attachments=CreateImageAttachment(), as_user=True)
             # Look for keywords
             else:
                 poss = []
