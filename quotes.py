@@ -10,7 +10,8 @@ class Quotes:
             for row in quotes:
                 if row[0] not in self.quote_list:
                     self.quote_list[row[0]] = []
-                self.quote_list[row[0]].append(row[1])
+                if not row[0].startswith('//'):
+                    self.quote_list[row[0]].append(row[1])
                 
         Quotes._instance = self
         
