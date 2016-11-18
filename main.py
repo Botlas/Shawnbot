@@ -8,6 +8,7 @@ from slackclient import SlackClient
 def CreateImageAttachment():
     max = 12
     img_url = 'https://github.com/Botlas/Shawnbot/blob/master/images/image%s.png' % random.randint(0,max)
+    print img_url
 
     attachments = {
             "attachments" : [
