@@ -6,9 +6,10 @@ from quotes import Quotes
 from slackclient import SlackClient
 
 def CreateImageAttachment():
-    max = 12
+    max = 35
     #img_url = 'https://github.com/Botlas/Shawnbot/blob/master/images/image%s.png' % random.randint(0,max)
-    img_url = 'https://raw.githubusercontent.com/Botlas/Shawnbot/master/images/image%s.png' % random.randint(0,max)
+    # img_url = 'https://raw.githubusercontent.com/Botlas/Shawnbot/master/images/image%s.png' % random.randint(0,max)
+    img_url = 'https://raw.githubusercontent.com/grantvix/images/master/image%s.png' % random.randint(0,max)
     
     attachments = [
         {
@@ -63,7 +64,7 @@ class Shawnbot:
             if command == command.upper():
                 text = "Calm down. Calm down."
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
-            elif 'jimmy' in command.lower():
+            elif 'jim' in command.lower():
                 print 'here'
                 attachments=CreateImageAttachment()
                 print attachments
