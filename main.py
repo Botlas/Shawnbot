@@ -9,15 +9,13 @@ def CreateImageAttachment():
     max = 12
     img_url = 'https://github.com/Botlas/Shawnbot/blob/master/images/image%s.png' % random.randint(0,max)
 
-    attachments = {
-            "attachments" : [
-                {
-                    "image_url": img_url,
-                    "text": "Jim's Busy."
-                }
-            ]
-        }
-
+    attachments = [
+        {
+            "image_url": img_url,
+            "text": "Jim's Busy."
+         }
+    ]
+    
     return attachments
 
 
