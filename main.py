@@ -8,7 +8,6 @@ from slackclient import SlackClient
 def CreateImageAttachment():
     max = 12
     img_url = 'https://github.com/Botlas/Shawnbot/blob/master/images/image%s.png' % random.randint(0,max)
-    print img_url
 
     attachments = {
             "attachments" : [
@@ -67,7 +66,9 @@ class Shawnbot:
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
             elif 'jimmy' in command.lower():
                 print 'here'
-                self.slack_client.api_call("chat.postMessage", channel=channel, attachments=CreateImageAttachment(), as_user=True)
+                attachments=CreateImageAttachment()
+                print attachments
+                self.slack_client.api_call("chat.postMessage", channel=channel, attachments=attachments, as_user=True)
             # Look for keywords
             else:
                 poss = []
