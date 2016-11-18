@@ -65,9 +65,7 @@ class Shawnbot:
                 text = "Calm down. Calm down."
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
             elif 'jim' in command.lower():
-                print 'here'
                 attachments=CreateImageAttachment()
-                print attachments
                 self.slack_client.api_call("chat.postMessage", channel=channel, attachments=attachments, as_user=True)
             # Look for keywords
             else:
