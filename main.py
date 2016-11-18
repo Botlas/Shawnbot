@@ -13,7 +13,7 @@ def CreateImageAttachment():
         {
             "attachments" : [
                 {
-                    "image_url": image_url,
+                    "image_url": img_url,
                     "text": "Jim's Busy."
                 }
             ]
