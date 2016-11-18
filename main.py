@@ -59,7 +59,7 @@ class Shawnbot:
     
     def _handle_command(self, command, channel):
         try:
-            # print command
+            	print command
             # It's all upper case
             if command == command.upper():
                 text = "Calm down. Calm down."
