@@ -64,7 +64,7 @@ class Shawnbot:
             if command == command.upper():
                 text = "Calm down. Calm down."
                 self.slack_client.api_call("chat.postMessage", channel=channel, text=text, as_user=True)
-            elif command.lower() == "jimmy":
+            elif 'jimmy' in command.lower():
                 self.slack_client.api_call("chat.postMessage", channel=channel, attachments=CreateImageAttachment(), as_user=True)
             # Look for keywords
             else:
