@@ -9,7 +9,7 @@ def CreateImageAttachment():
     max = 35
     #img_url = 'https://github.com/Botlas/Shawnbot/blob/master/images/image%s.png' % random.randint(0,max)
     # img_url = 'https://raw.githubusercontent.com/Botlas/Shawnbot/master/images/image%s.png' % random.randint(0,max)
-    img_url = 'https://raw.githubusercontent.com/grantvix/images/master/image%s.png' % random.randint(0,max)
+    img_url = 'https://raw.githubusercontent.com/grantvix/images/master/image%s.png' % random.randint(1,max)
     
     attachments = [
         {
